@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Initializing...</title>
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: monospace;
+      background-color: black;
+      color: #00ff00;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    #terminal1, #terminal2 {
+      height: 100vh;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      display: none;
+    }
+
+    #terminal1 {
+      display: block;
+    }
+
+    #terminal2 {
+      font-family: 'Patrick Hand', cursive;
+      color: #d63384;
+      background: radial-gradient(circle, #ffe6f0, #ffcce5);
+      padding: 30px;
+      text-align: center;
+    }
+
+    #logContainer {
+      background-color: #fff0f6;
+      border: 2px dashed #ff66a3;
+      padding: 25px;
+      border-radius: 20px;
+      width: 85%;
+      margin: 30px auto;
+      height: 60vh;
+      overflow-y: auto;
+      box-shadow: 0 0 30px #ff99cc;
+    }
+
+    .blinker {
+      animation: blink 1s step-start infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SEREM MODE -->
+  <div id="terminal1">
+    <div id="log1"></div>
+    <br><br>
+    <center><span class="blinker">▍</span><br><small>Klik di mana saja untuk lanjut...</small></center>
+  </div>
+
+  <!-- CINTA MODE -->
+  <div id="terminal2">
+    <h1>💕 Sistem H4ck 💕</h1>
+    <div id="logContainer">
+      <div id="log2"></div>
+      <span class="blinker">💘</span>
+    </div>
+    <audio id="typeSound" src="https://www.myinstants.com/media/sounds/pop-up-official.mp3" preload="auto"></audio>
+  </div>
+
+  <script>
+    const log1 = document.getElementById('log1');
+    const log2 = document.getElementById('log2');
+    const sound = document.getElementById('typeSound');
+
+    const fakeLogs = [
+      "[*] Inisialisasi protokol sistem...",
+      "[*] Menembus lapisan keamanan...",
+      "[*] Enkripsi dinonaktifkan.",
+      "[*] Login sebagai administrator...",
+      "[!] Mengakses file sensitif...",
+      "[!] Terhubung ke perangkat target.",
+      "[❌] ERROR: Emosi terdeteksi..."
+    ];
+
+    const cintaLogs = [
+      "[💖] Mengakses database",
+      "[💘] Login berhasil",
+      "[📩] Mengirim sinyal cinta...",
+      "[🔓] Membuka kunci hati target...",
+      "[🌹] Menyisipkan puisi romantis...",
+      "[💌] Kamu berhasil membuat dia tersenyum :)",
+      "[🎯] Target terkena panah cinta 💘",
+      "[🎉] Hati lu berhasil diretas 💞",
+      "[✔️] Mission complete: lu sekarang jdi milik gw, cnda😳"
+    ];
+
+    let i = 0;
+    function tampilkanFakeLog() {
+      if (i < fakeLogs.length) {
+        log1.innerHTML += fakeLogs[i] + "\n";
+        log1.scrollTop = log1.scrollHeight;
+        i++;
+        setTimeout(tampilkanFakeLog, 1000);
+      }
+    }
+
+    tampilkanFakeLog();
+
+    function masukKeModeCinta() {
+      document.getElementById('terminal1').style.display = 'none';
+      document.getElementById('terminal2').style.display = 'block';
+      mulaiCinta();
+    }
+
+    window.addEventListener('click', masukKeModeCinta);
+
+    let j = 0;
+    function mulaiCinta() {
+      if (j < cintaLogs.length) {
+        sound.play();
+        log2.innerHTML += cintaLogs[j] + "<br>";
+        log2.scrollTop = log2.scrollHeight;
+        j++;
+        setTimeout(mulaiCinta, 1300);
+      } else {
+        log2.innerHTML += "<br><br><strong>❤️ Hati kamu telah di-hack dengan sukses! ❤️</strong>";
+      }
+    }
+  </script>
+</body>
+</html>
